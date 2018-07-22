@@ -33,11 +33,16 @@ function radToDeg (rad) {
   return (180 / Math.PI) * rad
 }
 
+function hsla (h, s, l, a) {
+  return 'hsla(' + h + ',' + s + '%,' + l + '%,' + a + ')'
+}
+
 export {
   getRandom,
   getRandomInt,
   getParameterByName,
   getDevicePixelRatio,
   degToRad,
-  radToDeg
+  radToDeg,
+  hsla
 }
