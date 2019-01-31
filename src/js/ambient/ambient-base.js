@@ -10,9 +10,9 @@ class AmbientBase {
     this.canvas2 = canvas2
     this.ctx1 = canvas1.getContext('2d')
     this.ctx2 = canvas2.getContext('2d')
-    this.setCanvasStyle(canvas2, {
-      backgroundColor: 'black'
-    })
+    // this.setCanvasStyle(canvas2, {
+    //   backgroundColor: window[O2_AMBIENT_CONFIG].backgroundColor
+    // })
     this.parent.appendChild(canvas2)
   }
 

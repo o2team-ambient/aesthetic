@@ -28,7 +28,7 @@ class Aesthetic extends AmbientBase {
   }
 
   create () {
-    this.renderBgCanvas()
+    // this.renderBgCanvas()
     this.draw = this.drawDefault
     this.addParticles()
     this.play()
@@ -41,20 +41,29 @@ class Aesthetic extends AmbientBase {
     this.FPS = 30
     this.sizeBase = this.width + this.height
     this.count = Math.floor(this.sizeBase * 0.3)
-    this.hue = window[O2_AMBIENT_CONFIG].hue // getRandom(0, 360)
+    this.backgroundColor = window[O2_AMBIENT_CONFIG].backgroundColor
+    // this.hue = window[O2_AMBIENT_CONFIG].hue // getRandom(0, 360)
+    this.hue = getRandom(0, 360)
+    // this.saturation = window[O2_AMBIENT_CONFIG].saturation
+    this.saturation = getRandom(0, 40)
+    this.alpha = window[O2_AMBIENT_CONFIG].alpha || 0.1
     this.option = {
+      backgroundColor: this.backgroundColor,
       radiusMin: 1,
       radiusMax: this.sizeBase * 0.04,
       blurMin: 10,
       blurMax: this.sizeBase * 0.04,
       hueMin: this.hue,
       hueMax: this.hue + 100,
-      saturationMin: 10,
-      saturationMax: 70,
+      saturationMin: this.saturation,
+      saturationMax: this.saturation + 60,
       lightnessMin: 20,
       lightnessMax: 50,
-      alphaMin: 0.1,
-      alphaMax: 0.5
+      alphaMin: this.alpha,
+      alphaMax: this.alpha + 0.4,
+
+      density: window[O2_AMBIENT_CONFIG].density || 3,
+      radius: window[O2_AMBIENT_CONFIG].radius || 3
     }
     this.className = O2_AMBIENT_CLASSNAME
     this.isInited && this.create()
@@ -85,32 +94,36 @@ class Aesthetic extends AmbientBase {
     const ctx1 = this.ctx1
     const option = this.option
     ctx1.clearRect(0, 0, this.width, this.height)
-    ctx1.globalCompositeOperation = 'lighter'
-    for (let i = 0; i < this.count; i++) {
-      const radius = getRandom(option.radiusMin, option.radiusMax)
-      const blur = getRandom(option.blurMin, option.blurMax)
-      const x = getRandom(0, this.width)
-      const y = getRandom(0, this.height)
-      const hue = getRandom(option.hueMin, option.hueMax)
-      const saturation = getRandom(option.saturationMin, option.saturationMax)
-      const lightness = getRandom(option.lightnessMin, option.lightnessMax)
-      const alpha = getRandom(option.alphaMin, option.alphaMax)
+    this.setCanvasStyle(this.canvas2, {
+      backgroundColor: option.backgroundColor
+    })
+    // ctx1.globalCompositeOperation = 'lighter'
+    // for (let i = 0; i < this.count; i++) {
+    //   const radius = getRandom(option.radiusMin, option.radiusMax)
+    //   const blur = getRandom(option.blurMin, option.blurMax)
+    //   const x = getRandom(0, this.width)
+    //   const y = getRandom(0, this.height)
+    //   const hue = getRandom(option.hueMin, option.hueMax)
+    //   const saturation = getRandom(option.saturationMin, option.saturationMax)
+    //   const lightness = getRandom(option.lightnessMin, option.lightnessMax)
+    //   const alpha = getRandom(option.alphaMin, option.alphaMax)
 
-      ctx1.shadowColor = hsla(hue, saturation, lightness, alpha)
-      ctx1.shadowBlur = blur
-      ctx1.beginPath()
-      ctx1.arc(x, y, radius, 0, Math.PI * 2, false)
-      ctx1.closePath()
-      ctx1.fill()
-    }
+    //   ctx1.shadowColor = hsla(hue, saturation, lightness, alpha)
+    //   ctx1.shadowBlur = blur
+    //   ctx1.beginPath()
+    //   ctx1.arc(x, y, radius, 0, Math.PI * 2, false)
+    //   ctx1.closePath()
+    //   ctx1.fill()
+    // }
   }
 
   addParticles () {
     const particles = []
-    const len = Math.floor((this.sizeBase) * 0.03)
+    const { density, radius } = this.option
+    const len = Math.floor((this.sizeBase) * 0.01 * density)
     for (let i = 0; i < len; i++) {
       particles.push({
-        radius: getRandom(1, this.sizeBase * 0.03),
+        radius: getRandom(1, this.sizeBase * 0.01 * radius),
         x: getRandom(0, this.width),
         y: getRandom(0, this.height),
         angle: getRandom(0, Math.PI * 2),

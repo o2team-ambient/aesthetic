@@ -18,7 +18,7 @@ let controlInit = () => {
   class OtherConfig {
     constructor () {
       this.message = '梦幻背景'
-      this.backgroundColor = '#ffffff'
+      this.backgroundColor = '#000'
       this.play = () => {
         if (!window[O2_AMBIENT_MAIN] || !window[O2_AMBIENT_MAIN].toggle || typeof window[O2_AMBIENT_MAIN].toggle !== 'function') return
         window[O2_AMBIENT_MAIN].toggle()
@@ -45,7 +45,23 @@ let controlInit = () => {
 
       gui.add(otherConfig, 'message').name('配置面板')
       gui.add(otherConfig, 'play').name('播放 / 暂停')
-      config.hue && gui.add(config, 'hue', 0, 360, 1).name('色调').onFinishChange(val => {
+      // config.hue && gui.add(config, 'hue', 0, 360, 1).name('色调').onFinishChange(val => {
+      //   // window[O2_AMBIENT_INIT]()
+      //   this.resetCanvas()
+      // })
+      // config.saturation && gui.add(config, 'saturation', 0, 30, 1).name('亮度').onFinishChange(val => {
+      //   // window[O2_AMBIENT_INIT]()
+      //   this.resetCanvas()
+      // })
+      // config.alpha && gui.add(config, 'alpha', 0, 0.5, 0.1).name('透明度').onFinishChange(val => {
+      //   // window[O2_AMBIENT_INIT]()
+      //   this.resetCanvas()
+      // })
+      config.density && gui.add(config, 'density', 1, 10, 1).name('密度').onFinishChange(val => {
+        // window[O2_AMBIENT_INIT]()
+        this.resetCanvas()
+      })
+      config.radius && gui.add(config, 'radius', 1, 10, 1).name('尺寸').onFinishChange(val => {
         // window[O2_AMBIENT_INIT]()
         this.resetCanvas()
       })
