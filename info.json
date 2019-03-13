@@ -1,10 +1,11 @@
 {
   "author": "liujianchao1",
   "demoUrl": "http://jdc.jd.com/demo/ambient/aesthetic/",
+  "miniDemoUrl": "http://jdc.jd.com/demo/ambient/aesthetic/index_demo.html",
   "title": "aesthetic",
   "ambName": "梦幻",
   "github": "https://github.com/o2team-ambient/aesthetic",
-  "demoSnippet": "<link href=\"//storage.jd.com/ambient/styles-aesthetic.css?t=1548919149000\" rel=\"stylesheet\"></link><!-- S 主体内容 -->\n  <div class=\"o2team_ambient_main\">\n  </div>\n  <!-- E 主体内容 --><script src=\"//storage.jd.com/ambient/bundle-aesthetic.js?t=1548919149000\"></script>",
-  "controlUrl": "//storage.jd.com/ambient/control-aesthetic.js?t=1548919149000",
-  "configUrl": "//storage.jd.com/ambient/config-aesthetic.js?t=1548919149000"
+  "demoSnippet": "<link href=\"//storage.jd.com/ambient/styles-aesthetic.css?t=1552469076000\" rel=\"stylesheet\"></link><!-- S 主体内容 -->\n  <div class=\"o2team_ambient_main\">\n  </div>\n  <!-- E 主体内容 --><script src=\"//storage.jd.com/ambient/bundle-aesthetic.js?t=1552469076000\"></script>",
+  "controlUrl": "//storage.jd.com/ambient/control-aesthetic.js?t=1552469076000",
+  "configUrl": "//storage.jd.com/ambient/config-aesthetic.js?t=1552469076000"
 }
