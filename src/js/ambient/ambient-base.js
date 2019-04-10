@@ -25,7 +25,7 @@ class AmbientBase {
       top: 0,
       width: `${this.width / devicePixelRatio}px`,
       height: `${this.height / devicePixelRatio}px`,
-      zIndex: -1,
+      zIndex: 999,
       pointerEvents: 'none'
     })
     canvas.className = this.className

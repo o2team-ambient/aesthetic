@@ -1,6 +1,6 @@
 {
   "name": "@o2team/ambient-aesthetic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "夸克动效库-梦幻",
   "main": "dist/index.min.js",
   "scripts": {
